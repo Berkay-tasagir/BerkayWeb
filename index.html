@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anasayfa</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- YouTube Oynatıcı -->
+    <iframe
+      id="youtube-iframe"
+      width="0"
+      height="0"
+      src="https://www.youtube.com/embed/HuFYqnbVbzY?autoplay=1&mute=1&enablejsapi=1"
+      title="YouTube video player"
+      allow="autoplay; encrypted-media"
+      allowfullscreen>
+    </iframe>
+
+    <!-- Tıklanabilir Alan -->
+    <div class="overlay" id="overlay" onclick="startMusic()"></div>
+
+    <!-- Arka Plan Videosu -->
+    <video class="video-bg" autoplay muted loop>
+      <source src="video/arka.mp4" type="video/mp4" />
+    </video>
+
+    <!-- Ana İçerik -->
+    <div class="kutu">
+      <div class="baslik-container">
+        <img class="profil-resmi" src="images/Berkay.jpg" alt="Ben" />
+        <h1>Emin Berkay Taşağır</h1>
+      </div>
+      <div class="menu">
+        <span onclick="loadContent('about.html')">Hakkımda</span> |
+        <span onclick="loadContent('internships.html')">Stajlarım</span> |
+        <span onclick="loadContent('links.html')">Linklerim</span>
+      </div>
+      <div id="content-area">
+        <!-- Varsayılan içerik buraya yüklenecek -->
+      </div>
+    </div>
+
+    <script>
+      // YouTube oynatıcıyı başlatma
+      function startMusic() {
+        const iframe = document.getElementById("youtube-iframe");
+        const overlay = document.getElementById("overlay");
+
+        // İframe görünür hale getir ve sesi aç
+        iframe.style.display = "block";
+        const iframeWindow = iframe.contentWindow;
+
+        // YouTube API ile sesi aç
+        iframeWindow.postMessage(
+          '{"event":"command","func":"unMute","args":""}',
+          "*"
+        );
+
+        // Overlay'i kaldır
+        overlay.style.display = "none";
+      }
+
+      // Sayfa yüklendiğinde varsayılan içerik yüklensin
+      window.onload = function () {
+        loadContent('about.html');
+      };
+
+      // İçeriği dinamik olarak yükleyen fonksiyon
+      function loadContent(file) {
+        fetch(file)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Dosya yüklenemedi");
+            }
+            return response.text();
+          })
+          .then((data) => {
+            document.getElementById("content-area").innerHTML = data;
+          })
+          .catch((error) => {
+            console.error("Hata:", error);
+            document.getElementById("content-area").innerHTML =
+              "<p>İçerik yüklenemedi.</p>";
+          });
+      }
+    </script>
+  </body>
+</html>
