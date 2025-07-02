@@ -43,7 +43,7 @@ body {
   z-index: 1; /* Video arka planda kalır */
 
   position: absolute;
-  top: 12%; /* Yukarıdan %20 uzaklaştır */
+  top: 12%; /* Yukarıdan %12 uzaklaştır */
   left: 50%; /* Yatay merkezleme */
   transform: translateX(-50%); /* Kutunun genişliğine göre ortala */
 }
