@@ -9,7 +9,7 @@
 </head>
 <body>
   <header class="top-bar">
-    <button onclick="goBack()">← Geri</button>
+    <button onclick="goBack()">← Web sitesine dönüş</button>
     <h1>Oyun Geliştirme Günlüğüm</h1>
   </header>
 
@@ -18,30 +18,37 @@
     <section class="entry right">
   <div class="text-box">
     <h2>Günlüğe başlamadan önce bilgilendirme</h2>
-    <p> Bu oyun geliştirme sürecine başladığımda oyun geliştirme hakkında tek bilgi birikimim bilgisayar mühendisi olmamdı. 
-      Yani yaptığım bu ilerlemeler oyun geliştirme hakkında 0 bilgi sahibi birisinin günlükte geldiği yeri göstermekte.
-      Çalıştığım günlerde verdiğim aralar çıkarılınca tahmini günde 5.5 çalışma saatine denk gelmekte.
-      Unreal engine 5.4.4 sürümünde geliştirme yaapmaktayım ve sistemimi unrealın paylaştığı motion matching sisteminde geliştirmekteyim.
-      Şu ana kadar geldiğim yerde oynumun %100ünü blueprint yöntemiyle geliştirdim (güncellenicek) oyunuma C++ katkısını ileri zamanlarda başlamayı/öğrenmeyi düşünüyorum. <br> <br>
+    <p> Bu oyun geliştirme sürecine başladığımda, şu anki oyunu geliştirmek için tek bilgi birikimim bilgisayar mühendisliği eğitimimdi. 
+      Üniversitede oyun projemizde aseprite uygulamasından kart tasarımları yapmıştım.
+      Yani bu günlükte yer alan ilerlemeler, oyun geliştirme hakkında sıfır bilgiye sahip bir kişinin 52 günlük çabasıyla ulaştığı seviyeyi göstermektedir. 
+      Çalışma günlerindeki ara günler çıkarıldığında, ortalama günlük çalışma süresi yaklaşık 5.5 saattir.
+      Projemi Unreal Engine 5.4.4 sürümünde geliştiriyorum. Sistemi, Epic Games'in sunduğu Motion Matching altyapısı üzerine inşa ettim. 
+      Geliştirmelerimin tamamını şu ana kadar Blueprint ile gerçekleştirdim. C++ tarafına ise ileri aşamalarda geçmeyi ve öğrenmeyi planlıyorum. Web sayfası günlüğüm 
+      asıl günlüğümünden özetlenerek düzenlendi ve yazılı bugfixlerin çoğu çıkarıldı  karmaşıklık ve okuma süresini azaltmak için yeniden yazıldı. 
+      Günlük nasıl yaptığım değil ne yaptığımı yazmakta.
+  <br><br>
 
       Oyun geliştirme sürecinde edindiğim bilgiler: <br>
-      Karakterin dünyadaki durumu yerine göre haraketlerini optimize etmek. <br>
-      Animasyonları pose search database ekleyerek duruma göre Chooser table ile motion matchingte uygun animasyonu oynatma  <br>
-      Grapling Hook sistemi.<br>
-      Structure, Enumeration, Data table kullanımını öğrenerek eklenicek yada çıkarılacak eşyalar yada verilerin otomasyonunu kolaylığını sağlamak sağlamak. <br>
-      Klavye mouse inputlarına göre karakterin seçeceği animasyonları yönetmek. <br>
-      Yeni Meshler ekleyerek bu meshlere özellikler atamak. <br>
-      Line trace by channel kullanımı. <br>
-      Zamanlayıcı kullanarak animasyonları düzenlemek.<br>
-      Fonksiyon kullanamı. <br>
-      Meshleri karaktere sabitlemek örneğin silah kullanımında sağ elle tutulan silahı sol elle desteklemek. <br>
-      Kamera ayarları ayarlamak ve klavye inputları ile kamera durumlarını değiştirmek. <br>
-      Blueprintler arası variable verilerini geçirmek, aralarında veri bağlantılarını sağlamak. <br>
-      Envanter sistemi ve bu envanter sistemlerindeki verileri değiştirme ekleme metinleri ikonları değiştirmek ve karaktere uygulayabilmek. <br>
-      Az miktarda niagara kullanımı. <br>
-      Karakterin Kemiklerini ve animasyonlarını düzenleme. <br>
-      Mesh spawnlama droplama destroylamak. <br>
-      Başarılı bir şekilde hataların yerlerini tespit edip nasıl düzelticeğini hakkında izliyeceğim yolu bilmek. <br>
+      Karakterin dünyadaki durumuna göre hareketlerini optimize etme. <br>
+      Animasyonları Pose Search veritabanına ekleyerek, duruma göre Chooser Table ile Motion Matching sisteminde uygun animasyonu oynatma. <br>
+      Grappling Hook sistemi kurma. <br>
+      Structure, Enumeration ve Data Table kullanımı öğrenerek; eklenip çıkarılacak eşyalar veya verilerin otomasyonunu sağlamak. <br>
+      Klavye ve mouse inputlarına göre karakterin seçeceği animasyonları yönetmek. <br>
+      Yeni mesh’ler ekleyerek bu mesh’lere veriler atamak. <br>
+      Line Trace by Channel kullanımı. <br>
+      Zamanlayıcı (Timer) kullanarak animasyonları düzenlemek. <br>
+      Fonksiyon kullanımı. <br>
+      Array kullanımı değerlerini güncelleme. <br>
+      HUD ekleme <br>
+      Mesh’leri karaktere sabitlemek — örneğin, sağ elle tutulan silahı sol elle desteklemek. <br>
+      Kamera ayarlarını yapmak ve klavye inputları ile kamera davranışlarını değiştirmek. <br>
+      Blueprint’ler arası variable (değişken) verilerini geçirmek ve aralarında veri bağlantılarını sağlamak. <br>
+      Envanter sistemi kurmak ve bu sistemdeki verileri değiştirme, ekleme; metinleri ve ikonları düzenleyip karaktere uygulayabilmek. <br>
+      Az miktarda Niagara kullanımı. <br>
+      Karakterin kemik yapısını ve animasyonlarını düzenlemek. <br>
+      Mesh spawnlama, droplama ve yok etme (destroy). <br>
+      Hataların yerlerini başarılı bir şekilde tespit edip, nasıl düzeltileceğine dair izleyeceğim yolu belirleyebilmek. <br>
+      
     </p>
   </div>
 </section>
@@ -136,7 +143,7 @@
 
 <section class="entry left">
   <div class="text-box">
-    <h2>Gün 15 ve 18</h2>
+    <h2>Gün 15 ve 18 (Grapplinghook)</h2>
     <p>Grappling hook sistemi geliştirildi. Q tuşuna bastığımda baktığım yere bir kanca fırlıyor ve kamerayı döndürsem bile sabit noktaya çekiliyor. 
       Free-look modunda kanca atılamaması sağlandım.Hook çarpma davranışı geliştirdim. Tırmanılabilir alana çarpıldığında karakter duruyor ve kısa bir zıplama ile tırmanmayı kolaylaştırıyor.
       Bu sistem yalnızca yukarıya doğru belli bir yükseklikte çarpmalarda çalışıyor.</p>
@@ -171,7 +178,7 @@
   </div>
 </section>
 
-<section class="entry left">
+<section class="entry right">
   <div class="text-box">
     <h2>Gün 22</h2>
     <p>Yazdığım yeni sisteme SMG ve AS-VAL tipi uzun namlulu silahların tutuş ve aim alma animasyonlarını başarılı bir şekilde entegre ettim. Bu düzenlemelerle birlikte silahlar artık gerçekçi bir şekilde kullanılabilir hale geldi.
@@ -206,7 +213,7 @@
   </div>
 </section>
 
-<section class="entry left">
+<section class="entry right">
   <div class="text-box">
     <h2>Gün 27–29 (Teknik Öğrenimler)</h2>
     <p>Silah tipine göre otomasyon sistemi geliştirildi. Artık aynı tipe sahip silahlar tek bir animasyon üzerinden çalışıyor.Bu sayede kod tekrarlamasından kurtulmuş oldum.
@@ -215,6 +222,7 @@
       Cross sistemini düzenledim ve karakterin artık crossun olduğu yere yani ekranın ortasına ateş edebilme özelliğini getirdim. Ayrıca eklediğim bu sistem sol sağ omuzlarda da düzgün çalışmakta
        ve silah mermisi silahtan çıkıp ateş ediceğimiz yere gidiyor arada bir engel varsa mermi engele çarpıyor bu sayede gerçekçiliği sağladım karşı karakterin ekranında gözükmüyorken vurabilme durumunu ortadan kaldırdım.</p>
   </div>
+  <img src="gif/FireAnim.gif" alt="Hareket Animasyonu" class="gif-placeholder" />
 </section>
 
 <section class="entry right">
@@ -258,10 +266,9 @@
     <h2>Gün 38</h2>
     <p>Merminin elin içinden çıkma bug’u çözüldü. Artık tüm mermiler muzzle noktasından çıkıyor. Ayrıca hitbox sorunu giderildi ve tırmanırken yaşanan dönüş bug’u düzeltildi.</p>
   </div>
-  <img src="gif/FireAnim.gif" alt="Hareket Animasyonu" class="gif-placeholder" />
 </section>
 
-<section class="entry left">
+<section class="entry right">
   <div class="text-box">
     <h2>Gün 39–41</h2>
     <p>Her silah için mermi sayısı ve dolum sistemleri oluşturuldu entegre edildi. Artık mermiler her silahın kendine göre ayrı tutuluyor (tipinden ayrı). 
@@ -300,8 +307,8 @@
 <section class="entry left">
   <div class="text-box">
     <h2>Gün 47–50</h2>
-    <p>Silah mermi sisteminde büyük bir optimizasyon sağlandı. Artık sadece aktif silah sahnede bulunuyor, diğerleri eski sistemde destroy ediliyordu. Yeni sistemde silahlar destroy edilmiyor invisable yalıp başka yere atanıyor.
-      Böylece her silahın kendi mermi durumu korunuyor.</p>
+    <p>Silah mermi sisteminde büyük bir optimizasyon sağlandı. Artık sadece aktif silah sahnede bulunuyor, diğerleri eski sistemde destroy ediliyordu. Yeni sistemde silahlar destroy edilmiyor invisable yapılıp başka yere ışınlanıyor.
+      Böylece her silahın kendi mermi durumu korunuyor, aktif silah ile ateş edilirken pasif durumda kullanılmayan silahların mermileri zamana bağlı etkilenmeden yenileniyor.</p>
   </div>
   <img src="gif/EquipAnim.gif" alt="Hareket Animasyonu" class="gif-placeholder" />
 </section>
@@ -309,12 +316,23 @@
 <section class="entry right">
   <div class="text-box">
     <h2>Gün 51–52</h2>
-    <p>Yeni bir silah equip edildiğinde eskisi yere düşüyor aynı silah olsa bile. Eğer silahın mermisi bittiyse, yere düşen kopya da boş oluyor. Aynı silah tekrar kuşanıldığında animasyon bug’u engellendi.
+    <p>Yeni bir silah equip edildiğinde eskisi yere düşüyor yeni silah aynı silah olsa bile. Silahın mermisi bittiyse de silah droplanıyor. Aynı silah tekrar kuşanıldığında animasyon bug’u engellendi.
        Ayrıca unarmed geçişi boş slot seçildiğinde otomatik olarak çalışıyor. Bu değişim sayesinde envantere eksik silah seçmede yaşanan hatalar düzeltildi.</p>
   </div>
   <img src="gif/DropAnim.gif" alt="Hareket Animasyonu" class="gif-placeholder" />
 </section>
 
+<section class="bp-gallery">
+  <h2>Blueprint düzeni örnekleri </h2>
+  <div class="bp-grid">
+    <img src="bp/bp1.png" alt="Blueprint 1">
+    <img src="bp/bp2.png" alt="Blueprint 2">
+    <img src="bp/bp3.png" alt="Blueprint 3">
+    <img src="bp/bp4.png" alt="Blueprint 4">
+    <img src="bp/bp5.png" alt="Blueprint 5">
+    <img src="bp/bp6.png" alt="Blueprint 6">
+  </div>
+</section>
 
   </main>
 
