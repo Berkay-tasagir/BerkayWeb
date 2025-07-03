@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oyun Geliştirme Günlüğüm</title>
+  <link rel="stylesheet" href="devlog-style.css" />
+  <link rel="icon" href="images/WebLogo.png" type="image/png" />
+</head>
+<body>
+  <header class="top-bar">
+    <button onclick="goBack()">← Geri</button>
+    <h1>Oyun Geliştirme Günlüğüm</h1>
+  </header>
+
+  <main>
+    
+    <section class="entry right">
+  <div class="text-box">
+    <h2>Günlüğe başlamadan önce bilgilendirme</h2>
+    <p> Bu oyun geliştirme sürecine başladığımda oyun geliştirme hakkında tek bilgi birikimim bilgisayar mühendisi olmamdı. 
+      Yani yaptığım bu ilerlemeler oyun geliştirme hakkında 0 bilgi sahibi birisinin günlükte geldiği yeri göstermekte.
+      Çalıştığım günlerde verdiğim aralar çıkarılınca tahmini günde 5.5 çalışma saatine denk gelmekte.
+      Unreal engine 5.4.4 sürümünde geliştirme yaapmaktayım ve sistemimi unrealın paylaştığı motion matching sisteminde geliştirmekteyim.
+      Şu ana kadar geldiğim yerde oynumun %100ünü blueprint yöntemiyle geliştirdim (güncellenicek) oyunuma C++ katkısını ileri zamanlarda başlamayı/öğrenmeyi düşünüyorum. <br> <br>
+
+      Oyun geliştirme sürecinde edindiğim bilgiler: <br>
+      Karakterin dünyadaki durumu yerine göre haraketlerini optimize etmek. <br>
+      Animasyonları pose search database ekleyerek duruma göre Chooser table ile motion matchingte uygun animasyonu oynatma  <br>
+      Grapling Hook sistemi.<br>
+      Structure, Enumeration, Data table kullanımını öğrenerek eklenicek yada çıkarılacak eşyalar yada verilerin otomasyonunu kolaylığını sağlamak sağlamak. <br>
+      Klavye mouse inputlarına göre karakterin seçeceği animasyonları yönetmek. <br>
+      Yeni Meshler ekleyerek bu meshlere özellikler atamak. <br>
+      Line trace by channel kullanımı. <br>
+      Zamanlayıcı kullanarak animasyonları düzenlemek.<br>
+      Fonksiyon kullanamı. <br>
+      Meshleri karaktere sabitlemek örneğin silah kullanımında sağ elle tutulan silahı sol elle desteklemek. <br>
+      Kamera ayarları ayarlamak ve klavye inputları ile kamera durumlarını değiştirmek. <br>
+      Blueprintler arası variable verilerini geçirmek, aralarında veri bağlantılarını sağlamak. <br>
+      Envanter sistemi ve bu envanter sistemlerindeki verileri değiştirme ekleme metinleri ikonları değiştirmek ve karaktere uygulayabilmek. <br>
+      Az miktarda niagara kullanımı. <br>
+      Karakterin Kemiklerini ve animasyonlarını düzenleme. <br>
+      Mesh spawnlama droplama destroylamak. <br>
+      Başarılı bir şekilde hataların yerlerini tespit edip nasıl düzelticeğini hakkında izliyeceğim yolu bilmek. <br>
+    </p>
+  </div>
+</section>
+
+    <section class="entry right">
+  <div class="text-box">
+    <h2>Gün 0</h2>
+    <p>Proje başlangıcında, oyunun iskeletini kurmak adına ilk planlamalar yapıldı. Genel olarak sistemin hangi parçalardan oluşacağı belirlendi ve ilerleme sürecine zemin hazırlandı.</p>
+  </div>
+</section>
+
+<section class="entry left">
+  <div class="text-box">
+    <h2>Gün 1–2</h2>
+    <p>İlk günlerde youtubeda izlediğim tutoriallardan stamina bar sistemi oluşturdum, oyuncu hareketleri ve ana menü eklendi.
+      Ardından, youtube da izlediğim çözünürlük ve pencere 
+      modları gibi temel grafik ayarlarını içeren bir ayarlar menüsü geliştirdim. Bu menüde VSync ve optimizasyon gibi oyuncu 
+      deneyimini doğrudan etkileyen seçenekler de yer aldı.</p>
+  </div>
+</section>
+
+<section class="entry right">
+  <div class="text-box">
+    <h2>Gün 3</h2>
+    <p>YouTube’dan bulduğum yürüme ve tırmanma animasyonlarına sahip bir asset’i projeye entegre etmekle uğraştım. 
+      Bütün günümü bu entegrasyon sürecine ayırdım ve başarılı oldum. Bunun unreal engine motion matching olduğunu sonrada öğrendim.</p>
+  </div>
+  <img src="gif/HaraketAnim.gif" alt="Hareket Animasyonu" class="gif-placeholder" />
+</section>
+
+<section class="entry left">
+  <div class="text-box">
+    <h2>Gün 4–6 (Eğilme Sistemi)</h2>
+    <p>Karakterin eğilme sistemi üzerine yoğunlaştım. Uğraşlarmmın ardından youtubedan destek alarak bunu yapmaya karar verdim ve bunu çözen kişinin yöntemi ile çözdüm ufak hatalar nedeniyle sonuca ulaşamamışım.
+      Blueprint bağlantıları kuruldu, animasyon veritabanı oluşturuldu ve gerekli PSD bağlantıları tamamlandı. Eğilme, sabit dururken otomatik hale getirildi. Başlangıçta başarısızlık yaşandı ancak doğru referanslar bulununca eğilme sistemi başarıyla entegre edildi.
+      Asset dosyaları içinde bulunan karakterin durma pozisyonundayken oynayan ufak haraket animasyonları randomize ederek sisteme ekledim.
+    </p>
+  </div>
+  <img src="gif/EğilmeAnim.gif" alt="Hareket Animasyonu" class="gif-placeholder" />
+</section>
+
+<section class="entry right">
+  <div class="text-box">
+    <h2>Gün 6 ve 10 (Kamera Açıları)</h2>
+    <p>6. Gün ana kamera ve aim kamerası için açılar optimize edildi. Aim sırasında sağ omuzdan yakın plan görünüm sağlandı. Ayrıca ikinci bir değiştirilebilir kamera eklendi. Bu yapı, oyuncunun nişan alma hissini daha kontrollü hale getirdi. <br>
+      10. Gün Bu özelliği uzun uğraşlar sonucunda sıfırdan yazdım ve 8 saatlik yoğun çalışmayla sorunsuz şekilde entegre ettim.
+      sonunda omuz kamerası sistemi tamamen işlevsel hale getirildi. Sağ ve sol omuzdan görme kamerası ekledim ve sorunsuz bir şekilde çalıştırmayı başardım. 
+      
+  </div>
+  <img src="gif/AimAnim.gif" alt="Hareket Animasyonu" class="gif-placeholder" />
+</section>
+
+<section class="entry left">
+  <div class="text-box">
+    <h2>Gün 7 (Bugfixler)</h2>
+    <p>Koşarken durma animasyonunun silinmesi gibi hatalar giderildi. Havadayken eğilme bug’u düzeltildi. Aim alma ve parkur yaparken ateş etme sistemleri daha stabil hale getirildi.
+       Ayrıca zıplarken aim alma gibi birçok edge-case durum test edildi ve düzenlendi.</p>
+  </div>
+</section>
+
+<section class="entry right">
+  <div class="text-box">
+    <h2>Gün 8–9</h2>
+    <p>Mermi fiziği geliştirildi (yerçekimi kaldırıldı, hız artırıldı). Satın alınan premium asset’ten crosshair, silah sistemleri ve projeye entegre edildi. 
+      Üçüncü bir silah eklendi ve farklı durumlarda otomatik olarak elde belirme davranışları test edildi.</p>
+  </div>
+</section>
+
+<section class="entry right">
+  <div class="text-box">
+    <h2>Gün 10–12 (Silah Entegrasyonu ve Crosshair)</h2>
+    <p>Silah çeşitliliği artırıldı ve sistem öğrenildi, yeni asset’lerden alınan silahlar ve crosshair sistemleri başarıyla entegre edildi. Her silahın elinde tutma animasyonu tanımlandı. 
+      Crosshair animasyonları hareket ve düşüşe göre güncelleniyor.</p>
+  </div>
+  <img src="gif/CrossAnim.gif" alt="Hareket Animasyonu" class="gif-placeholder" />
+</section>
+
+<section class="entry left">
+  <div class="text-box">
+    <h2>Gün 11 (Ayak Pozisyonu)</h2>
+    <p>Karakterin eğimli yüzeylerde ayağının yere tam basması için düzenlemeler yapıldı. Bu iyileştirme sayesinde hem estetik hem de fiziksel uyum sağlandı.</p>
+  </div>
+  <img src="gif/FootAnim.gif" alt="Hareket Animasyonu" class="gif-placeholder" />
+</section>
+
+<section class="entry right">
+  <div class="text-box">
+    <h2>Gün 13–14 (Asset Birleştirme ve Optimizasyon)</h2>
+    <p>Projede farklı silah ve crosshair sistemlerinin mantıklı şekilde birlikte çalışması için optimizasyon çalışmaları yapıldı. Silahları entegre ederken yön ayarlamaları ve görünürlük testleri gerçekleştirildi.</p>
+  </div>
+</section>
+
+<section class="entry left">
+  <div class="text-box">
+    <h2>Gün 15 ve 18</h2>
+    <p>Grappling hook sistemi geliştirildi. Q tuşuna bastığımda baktığım yere bir kanca fırlıyor ve kamerayı döndürsem bile sabit noktaya çekiliyor. 
+      Free-look modunda kanca atılamaması sağlandım.Hook çarpma davranışı geliştirdim. Tırmanılabilir alana çarpıldığında karakter duruyor ve kısa bir zıplama ile tırmanmayı kolaylaştırıyor.
+      Bu sistem yalnızca yukarıya doğru belli bir yükseklikte çarpmalarda çalışıyor.</p>
+  </div>
+  <img src="gif/HookAnim.gif" alt="Hareket Animasyonu" class="gif-placeholder" />
+</section>
+
+<section class="entry right">
+  <div class="text-box">
+    <h2>Gün 16</h2>
+    <p>Oyuncunun haritadan çok uzağa gitmesini engellemek için görünmez bir çarpışma duvarı ekledim. Bu duvar, çarpma açısına bağlı olarak oyuncuyu doğru yöne sektiriyor. 
+      İleride bu duvara çarpıldığında oyuncunun platforma daha hızlı dönmesini sağlamak için hız çarpanı eklemeyi planlıyorum.</p>
+  </div>
+  <img src="gif/WallAnim.gif" alt="Hareket Animasyonu" class="gif-placeholder" />
+</section>
+
+<section class="entry left">
+  <div class="text-box">
+    <h2>Gün 17</h2>
+    <p>Box ve cube nesneleriyle etkileşim testleri yaptım. Yakın temasta fiziksel çarpışma davranışları inceledim. Belirli hızlarda çarpma olmadığında fiziksel tepkilerin alınmaması üzerine sistem güncellendi.</p>
+  </div>
+</section>
+
+<section class="entry right">
+  <div class="text-box">
+    <h2>Gün 19–21 (YouTube Projesi İncelemesi ve Fikir Geliştirme)</h2>
+    <p>İnternette bulduğum kapsamlı bir oyun projesini analiz ettim. Discord topluluğu ve video içerikleriyle desteklenen bu proje, animasyon problemlerime çözüm olabilecek yapıdaydı. 
+      Ancak projenin karmaşıklığı ve maliyeti nedeniyle kendi sistemime geri dönüp fikir olarak sade bir yapı kurgulamaya karar verdim. 
+      Hook sistemi, tırmanma alanları ve boss mantığına dair planlamalar yaptım.
+      Bu güne kadar eklemeyi öğğrendiğim silah ekleme tuş atama sol el pozisyon alma gibi sistemi yeni sisteme geçmem nedeniyle kullanmayı bıraktım.
+  </p>
+  </div>
+</section>
+
+<section class="entry left">
+  <div class="text-box">
+    <h2>Gün 22</h2>
+    <p>Yazdığım yeni sisteme SMG ve AS-VAL tipi uzun namlulu silahların tutuş ve aim alma animasyonlarını başarılı bir şekilde entegre ettim. Bu düzenlemelerle birlikte silahlar artık gerçekçi bir şekilde kullanılabilir hale geldi.
+      Geriye yalnızca ateş efekti ve iz animasyonları kaldı.</p>
+  </div>
+  <img src="gif/GunAnim.gif" alt="Hareket Animasyonu" class="gif-placeholder" />
+</section>
+
+<section class="entry right">
+  <div class="text-box">
+    <h2>Gün 23–24</h2>
+    <p>Silah çekme animasyonu ve kullanma animasyonlarına durum hali getirdim, zıplarken aim boz, elinde silah yokken aim almayı engelle gibi. 
+      Grappling hook sonrası zıplama bug’u ve tırmanırken aim alma bug’ları çözüldü. Traversal sırasında silah çekme engellendi. 
+      Overlay sisteminde görünürlük ve kullanılabilirlik doğru zamanlamalarla yönetildi.</p>
+  </div>
+</section>
+
+<section class="entry left">
+  <div class="text-box">
+    <h2>Gün 25</h2>
+    <p>Rifle tipi as val silahın aim alma ve silah çekme animasyonları başarılı bir şekilde uygulandım. Bu adımla birlikte büyük bir silah kategorisini tamamlamış oldum.
+      
+    </p>
+  </div>
+  <img src="gif/MoreGunsAnim.gif" alt="Hareket Animasyonu" class="gif-placeholder" />
+</section>
+
+<section class="entry right">
+  <div class="text-box">
+    <h2>Gün 26</h2>
+    <p>Traversal veya düşme gibi durumlarda karakterin unarmed pozisyona geçmesi bug'u düzeltildi. Silahlar artık her durumda kararlı şekilde elde kalıyor. Küçük bir görsel bug dışında sistem istikrarlı çalışıyor.</p>
+  </div>
+</section>
+
+<section class="entry left">
+  <div class="text-box">
+    <h2>Gün 27–29 (Teknik Öğrenimler)</h2>
+    <p>Silah tipine göre otomasyon sistemi geliştirildi. Artık aynı tipe sahip silahlar tek bir animasyon üzerinden çalışıyor.Bu sayede kod tekrarlamasından kurtulmuş oldum.
+       Ayrıca fonksiyon kullanımı, graph mantığı ve state machine yapısını deneyerek teknik bilgi seviyemi yükselttim. Ufak bug düzeltmeleri.
+      Silah tiplerinin bir kaçına tipine özel animasyonlarını ekledim.
+      Cross sistemini düzenledim ve karakterin artık crossun olduğu yere yani ekranın ortasına ateş edebilme özelliğini getirdim. Ayrıca eklediğim bu sistem sol sağ omuzlarda da düzgün çalışmakta
+       ve silah mermisi silahtan çıkıp ateş ediceğimiz yere gidiyor arada bir engel varsa mermi engele çarpıyor bu sayede gerçekçiliği sağladım karşı karakterin ekranında gözükmüyorken vurabilme durumunu ortadan kaldırdım.</p>
+  </div>
+</section>
+
+<section class="entry right">
+  <div class="text-box">
+    <h2>Gün 30</h2>
+    <p>Silah efektlerini ve seslerini entegre etmeyi öğrendim ancak geliştirme aşamasında durmasını pasif hale getirdim sonra daha düzgün hale getiricem. 
+      Bunun yerine envanter sistemi üzerine çalışmaya başladım. Sol panelde silahların olacağı, sağda ise spellerin bulunduğu, 4 silah ve 2 büyü seçilebilen yapı planlandım.</p>
+  </div>
+</section>
+
+<section class="entry left">
+  <div class="text-box">
+    <h2>Gün 31–34</h2>
+    <p>
+      Envanter sistemi tekrar tekrar baştan yazıldı. Günün sonunda başarılı bir şekilde envanter sistemi kuruldu TAB tuşuyla açılıp kapanabiliyor, slotlara silah atanabiliyor ve sistem çok daha sade, 
+      okunabilir bir hale getirildi. Slotlarda silah isimleri görünür halde çalışıyor.</p>
+  </div>
+  <img src="gif/EnvanterAçAnim.gif" alt="Hareket Animasyonu" class="gif-placeholder" />
+</section>
+
+<section class="entry right">
+  <div class="text-box">
+    <h2>Gün 35–36</h2>
+    <p>Hotbar sistemi ekledim bu sayede hangi silahı seçtiğimizi envanterdeyken görebiliyoruz. 4 silah slotu eklendi. 1-2-3-4 tuşlarıyla hızlıca silah seçimi yapılabiliyor. 
+      Hatalı durumlar engellendi. Blueprint silahları çağırmak için Weapon Component yapısı eklendi.</p>
+  </div>
+  <img src="gif/EnvanterAnim.gif" alt="Hareket Animasyonu" class="gif-placeholder" />
+</section>
+
+<section class="entry left">
+  <div class="text-box">
+    <h2>Gün 37</h2>
+    <p>Silah overlay sistemi tamamlandı. Her silah tipi için kendi çekme, aim alma ve ateş etme animasyonları tanımlanabiliyor.
+       Data table yapısı üzerinden her şey otomatik setleniyor ve hotbara eklenen silah doğru animasyonla spawnlanıyor.
+      Yeni envanter sisteminde envanterden silahların ele alınabilmesi sağlandı böylce önceki günlerde yaptığım silah equip, aim, ateş etme animasyonlarını problemsiz bir şekilde çalıştırmaya başladım.</p>
+  </div>
+</section>
+
+<section class="entry right">
+  <div class="text-box">
+    <h2>Gün 38</h2>
+    <p>Merminin elin içinden çıkma bug’u çözüldü. Artık tüm mermiler muzzle noktasından çıkıyor. Ayrıca hitbox sorunu giderildi ve tırmanırken yaşanan dönüş bug’u düzeltildi.</p>
+  </div>
+  <img src="gif/FireAnim.gif" alt="Hareket Animasyonu" class="gif-placeholder" />
+</section>
+
+<section class="entry left">
+  <div class="text-box">
+    <h2>Gün 39–41</h2>
+    <p>Her silah için mermi sayısı ve dolum sistemleri oluşturuldu entegre edildi. Artık mermiler her silahın kendine göre ayrı tutuluyor (tipinden ayrı). 
+      Silah ateş ettiğinde mermi azalıyor, ateş etmiyorken zamanla mermi yeniden doluyor. Tüm bu süreç veri tabanındaki silahların ayrı ayrı eklediğim fire rate'e göre çalışıyor.</p>
+  </div>
+  <img src="gif/AmmoAnim.gif" alt="Hareket Animasyonu" class="gif-placeholder" />
+</section>
+
+<section class="entry right">
+  <div class="text-box">
+    <h2>Gün 42–43</h2>
+    <p>Hotbar sistemindeki ikonlar ve slot boşluğu için gerekli güncellemeler yapıltım. Artık ikonlara doğru şekilde ulaşabiliyorum. 
+      WBP_Inventory'de 64 kez hotbar oluşturma sorunu çözüldü. Mermi çıkış noktasıyla ilgili hata geri geldi düzeltme ertesi güne bırakıldı.</p>
+  </div>
+</section>
+
+<section class="entry left">
+  <div class="text-box">
+    <h2>Gün 44 (El Animasyonu Düzenleme)</h2>
+    <p>Silah çekme sonrası sol eldeki bozulma animasyonu ve mermi çıkış sorunları düzeltildi. Actor referanslar yerine doğrudan BP_WeaponBase sistemi kullanılmaya başlandı. 
+      Bu, projede önemli bir temizlik ve öğrenme adımı oldu. Bazı tırmanma durumundayken aim almaya devam etme sorunu çözdüm.
+      Yeni bir valorant tipi panel ekleme çalışmalarına başladım bu panel sayesinde oyuncu envanterde değilken seçebileceğin silahları görebilmesini sağlıyacağım </p>
+  </div>
+  <img src="gif/TraversalAimAnim.gif" alt="Hareket Animasyonu" class="gif-placeholder" />
+</section>
+
+<section class="entry right">
+  <div class="text-box">
+    <h2>Gün 44–46</h2>
+    <p>Valorant benzeri sağ üst HUD sistemi tasarlandı. Silahlar seçildiğinde ilgili ikon ve mermi göstergesi anlık olarak güncelleniyor. Kodlar sadeleştirildi ve grafiksel bug'lar temizlendi.
+       Animasyonların ardından görünürlük zamanlamaları optimize edildi.</p>
+  </div>
+  <img src="gif/ShoweAnim.gif" alt="Hareket Animasyonu" class="gif-placeholder" />
+</section>
+
+<section class="entry left">
+  <div class="text-box">
+    <h2>Gün 47–50</h2>
+    <p>Silah mermi sisteminde büyük bir optimizasyon sağlandı. Artık sadece aktif silah sahnede bulunuyor, diğerleri eski sistemde destroy ediliyordu. Yeni sistemde silahlar destroy edilmiyor invisable yalıp başka yere atanıyor.
+      Böylece her silahın kendi mermi durumu korunuyor.</p>
+  </div>
+  <img src="gif/EquipAnim.gif" alt="Hareket Animasyonu" class="gif-placeholder" />
+</section>
+
+<section class="entry right">
+  <div class="text-box">
+    <h2>Gün 51–52</h2>
+    <p>Yeni bir silah equip edildiğinde eskisi yere düşüyor aynı silah olsa bile. Eğer silahın mermisi bittiyse, yere düşen kopya da boş oluyor. Aynı silah tekrar kuşanıldığında animasyon bug’u engellendi.
+       Ayrıca unarmed geçişi boş slot seçildiğinde otomatik olarak çalışıyor. Bu değişim sayesinde envantere eksik silah seçmede yaşanan hatalar düzeltildi.</p>
+  </div>
+  <img src="gif/DropAnim.gif" alt="Hareket Animasyonu" class="gif-placeholder" />
+</section>
+
+
+  </main>
+
+  <script>
+    function goBack() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
