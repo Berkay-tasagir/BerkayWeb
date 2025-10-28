@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Lol Stat Reader</title>
+  <title>LoL StatReader (Prototype)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="images/WebLogo.png" type="image/png">
   <style>
@@ -11,17 +11,66 @@
     .top-bar button{background:#ffd369;color:#121212;border:0;border-radius:8px;padding:8px 12px;font-size:15px;cursor:pointer}
     main{max-width:1000px;margin:100px auto;padding:0 16px}
     .card{background:#1e1e1e;border-radius:12px;padding:24px;box-shadow:0 8px 24px rgba(0,0,0,.35);border:1px solid #000}
+    h2{margin-top:0}
+    h3{margin:18px 0 8px}
+    ul{margin:0 0 12px 18px; line-height:1.7}
+    p{line-height:1.7; margin:0 0 12px}
+    .mono{font-family: Consolas, Monaco, 'Courier New', monospace; background:#000; color:#ffd369; padding:2px 6px; border-radius:6px}
   </style>
 </head>
 <body>
   <div class="top-bar">
     <button onclick="location.href='projelerim.html'">← Projelerim</button>
-    <strong>Lol Stat Reader</strong>
+    <strong>LoL StatReader</strong>
   </div>
+
   <main>
     <div class="card">
-      <h2>Proje Özeti</h2>
-      <p>Bu proje, League of Legends oyununda oyun içi tab ekranındaki  karkter resimlerini spellerini ve itemlerini okumak  ve değerlerini sisteme ekleyerek güncel olarak  karakterlerin statlarını spellerini  ve resimlrini  ekrana getirmeye çalışan bir arayüzdür.</p>
+      <h2>LoL StatReader (Prototype)</h2>
+      <p>Bu proje, League of Legends oyunundaki TAB ekranını analiz ederek oyuncuların şampiyon, büyü (spell) ve eşya (item) bilgilerini otomatik olarak algılayan tamamen dışsal (external) bir Python prototipidir. Oyun verilerine veya belleğe erişmeden, yalnızca ekran görüntülerini analiz ederek çalışır.</p>
+
+      <h3>Amaç</h3>
+      <p>Oyun sırasında TAB ekranındaki her oyuncunun hangi şampiyonu, hangi büyüleri ve hangi eşyaları kullandığını tespit etmek. Bu sayede harici bir araçla oyun içi istatistikleri gerçek zamanlı takip etmek.</p>
+
+      <h3>Çalışma Mantığı</h3>
+      <ul>
+        <li><span class="mono">screen_reader.py:</span> Ekranı gerçek zamanlı olarak yakalar (<span class="mono">mss</span> kütüphanesiyle). Her satırdaki şampiyon, büyü ve eşya bölgelerini otomatik keser (ROI). Görselleri yerel veritabanındaki simgelerle karşılaştırır. ORB (görsel benzerlik) + Histogram (renk benzerliği) yöntemleriyle en uygun eşleşmeyi bulur.</li>
+        <li><span class="mono">data_manager.py:</span> Riot’un JSON dosyalarındaki şampiyon, büyü ve eşya bilgilerini yükler.</li>
+        <li><span class="mono">overlay_ui.py:</span> Ekranda saydam bir dikdörtgen kutu göstererek hangi alanın analiz edileceğini kullanıcıya seçtirir. Seçilen konumu <span class="mono">selector_state.json</span> dosyasına kaydeder.</li>
+        <li><span class="mono">main.py:</span> “0” tuşuna basıldığında overlay kutusunu açar/kapatır. Kapatıldığında seçilen alanın ekran görüntüsünü alıp analiz eder. Analiz sonucunu terminalde listeler (şampiyon, büyüler, eşyalar).</li>
+        <li><span class="mono">make_champ_icons_circle.py:</span> Şampiyon ikonlarını dairesel hale getirerek daha doğru eşleşme sağlar.</li>
+        <li><span class="mono">position_finder.py / position_test.py:</span> Ekran koordinatlarını test etmek ve doğru bölgeleri bulmak için yardımcı araçlardır.</li>
+      </ul>
+
+      <h3>Özellikler</h3>
+      <ul>
+        <li>Tamamen dışsal analiz (oyun dosyalarına dokunmaz)</li>
+        <li>Gerçek zamanlı ekran yakalama ve görsel tanıma</li>
+        <li>ORB + Histogram hibrit eşleşme sistemi</li>
+        <li>Şampiyon, büyü ve eşya tespiti (ortalama %80+ doğruluk)</li>
+        <li>Otomatik sis/fog algılama</li>
+        <li>Kullanıcı dostu sürüklenebilir saydam overlay arayüzü</li>
+      </ul>
+
+      <h3>Kullanım</h3>
+      <ul>
+        <li>Oyun açıkken “0” tuşuna basarak analiz kutusunu ekrana yerleştir.</li>
+        <li>Kutuyu TAB ekranının üstüne hizala.</li>
+        <li>Tekrar “0” tuşuna basarak kutuyu kapat, analiz otomatik başlasın.</li>
+        <li>Sonuçlar terminalde listelenir (şampiyon, büyüler, eşyalar).</li>
+      </ul>
+
+      <p>Bu araç tamamen araştırma ve eğitim amaçlı geliştirilmiş, oyunla doğrudan etkileşime girmeyen bir “computer vision” projesidir.</p>
+
+      <!-- Görsel/GIF alanı: İleride eklemek üzere boş bırakıldı -->
+      <div style="margin-top:18px; display:grid; grid-template-columns: repeat(2, 1fr); gap:16px;">
+        <div style="background:#0d0d0d; border:1px dashed #333; border-radius:10px; height:180px; display:flex; align-items:center; justify-content:center; color:#888;">
+          Görsel/GIF 1 (sonradan eklenecek)
+        </div>
+        <div style="background:#0d0d0d; border:1px dashed #333; border-radius:10px; height:180px; display:flex; align-items:center; justify-content:center; color:#888;">
+          Görsel/GIF 2 (sonradan eklenecek)
+        </div>
+      </div>
     </div>
   </main>
 </body>

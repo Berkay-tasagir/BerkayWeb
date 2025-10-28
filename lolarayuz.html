@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Lol Arayüz</title>
+  <title>LoL-SplashScanner (Python + PyQt5 + OpenCV)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="images/WebLogo.png" type="image/png">
   <style>
@@ -11,17 +11,65 @@
     .top-bar button{background:#ffd369;color:#121212;border:0;border-radius:8px;padding:8px 12px;font-size:15px;cursor:pointer}
     main{max-width:1000px;margin:100px auto;padding:0 16px}
     .card{background:#1e1e1e;border-radius:12px;padding:24px;box-shadow:0 8px 24px rgba(0,0,0,.35);border:1px solid #000}
+    h2{margin-top:0}
+    h3{margin:18px 0 8px}
+    ul{margin:0 0 12px 18px; line-height:1.7}
+    p{line-height:1.7; margin:0 0 12px}
+    .mono{font-family: Consolas, Monaco, 'Courier New', monospace; background:#000; color:#ffd369; padding:2px 6px; border-radius:6px}
   </style>
 </head>
 <body>
   <div class="top-bar">
     <button onclick="location.href='projelerim.html'">← Projelerim</button>
-    <strong>Lol Arayüz</strong>
+    <strong>LoL-SplashScanner</strong>
   </div>
+
   <main>
     <div class="card">
-      <h2>Proje Özeti</h2>
-      <p>Bu proje, League of Legends oyununda oyun içi yükleme ekranındaki karakter kartlarının spellerini ve splashartlarını  okuyarak. karakter spellerini-resimlerini-ultisürelerini arayüze ekler.</p>
+      <h2>LoL-SplashScanner (Python + PyQt5 + OpenCV)</h2>
+      <p>Bu proje, League of Legends oyunundaki yükleme ekranından (loading screen) şampiyon ve büyü görsellerini (splash art + summoner spells) otomatik olarak algılayıp kullanıcıya gösteren bir ekran üstü (overlay) araçtır. Tamamen görüntü işleme (image recognition) mantığıyla çalışır; oyun verilerine veya API’ye erişmez.</p>
+
+      <h3>Amaç</h3>
+      <p>Ekrandaki beş oyuncunun hangi şampiyonu ve hangi büyüleri kullandığını otomatik tespit edip, kullanıcıya etkileşimli bir arayüzde göstermek.</p>
+
+      <h3>Çalışma Mantığı</h3>
+      <ul>
+        <li><span class="mono">overlay_window.py</span>: Oyunun ekranından belirli bir bölgeyi (örneğin loading ekranını) yakalar. ORB + Histogram tabanlı karşılaştırmalarla şampiyon splash ve büyü ikonlarını tanır. Sonuçları ekrandaki karakter kartlarına işler. Ayrıca kullanıcıya şeffaf bir “tarama kutusu” (<span class="mono">SelectionOverlay</span>) göstererek hangi bölgenin analiz edileceğini seçmesini sağlar.</li>
+        <li><span class="mono">character_card.py</span>: Her oyuncu için bir kart oluşturur. Kart üzerinde iki büyü ikonu, bir şampiyon resmi ve ulti süresi (R cooldown) sayacı bulunur. “Düzenle” modunda şampiyon manuel seçilebilir; “Kullan” modunda ulti süresi başlatılabilir.</li>
+        <li><span class="mono">spell_components.py</span>: Büyü ikonlarını yönetir. Her ikonun altında büyünün bekleme süresini gösteren geri sayım sayacı (<span class="mono">TimerBox</span>) vardır. Kullanıcı büyü ikonunu değiştirip yeni cooldown başlatabilir.</li>
+        <li><span class="mono">controls.py</span>: “Düzenle” ve “Kullan” modlarını yöneten butonları (<span class="mono">ModeSwitch</span>) içerir. Ayrıca tarama işlemini başlatmak için “Tara” butonu bulunur.</li>
+        <li><span class="mono">main.py</span>: PyQt5 uygulamasını başlatır ve tüm sistemi ekrana getirir.</li>
+      </ul>
+
+      <h3>Özellikler</h3>
+      <ul>
+        <li>Ekran üstünde sabit duran, saydam overlay arayüz</li>
+        <li>Otomatik büyü ve şampiyon tespiti (ORB + Histogram yöntemi)</li>
+        <li>Manuel düzeltme imkânı (Düzenle modu)</li>
+        <li>Gerçek zamanlı geri sayım (büyü ve ulti cooldown takibi)</li>
+        <li>Şampiyon JSON verisinden otomatik ulti süresi çekme</li>
+        <li>Sürüklenebilir, boyutlandırılabilir tarama kutusu</li>
+      </ul>
+
+      <h3>Kullanım</h3>
+      <ul>
+        <li>“Tara” butonuna basarak ekran bölgesini seç.</li>
+        <li>Araç o bölgenin ekran görüntüsünü alır ve büyü + şampiyonları tespit eder.</li>
+        <li>Sonuçlar karakter kartlarında gösterilir.</li>
+        <li>“Düzenle” modunda manuel seçim yapılabilir, “Kullan” modunda zamanlayıcılar aktif hale gelir.</li>
+      </ul>
+
+      <p>Bu proje, oyun içi veriyi doğrudan okumadan tamamen görüntü tanıma üzerine kurulu bir araştırma ve geliştirme aracıdır.</p>
+
+      <!-- Görsel/GIF alanı: İleride eklemek üzere boş bırakıldı -->
+      <div style="margin-top:18px; display:grid; grid-template-columns: repeat(2, 1fr); gap:16px;">
+        <div style="background:#0d0d0d; border:1px dashed #333; border-radius:10px; height:180px; display:flex; align-items:center; justify-content:center; color:#888;">
+          Görsel/GIF 1 (sonradan eklenecek)
+        </div>
+        <div style="background:#0d0d0d; border:1px dashed #333; border-radius:10px; height:180px; display:flex; align-items:center; justify-content:center; color:#888;">
+          Görsel/GIF 2 (sonradan eklenecek)
+        </div>
+      </div>
     </div>
   </main>
 </body>

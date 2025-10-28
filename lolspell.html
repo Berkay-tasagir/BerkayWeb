@@ -11,6 +11,11 @@
     .top-bar button{background:#ffd369;color:#121212;border:0;border-radius:8px;padding:8px 12px;font-size:15px;cursor:pointer}
     main{max-width:1000px;margin:100px auto;padding:0 16px}
     .card{background:#1e1e1e;border-radius:12px;padding:24px;box-shadow:0 8px 24px rgba(0,0,0,.35);border:1px solid #000}
+    h2{margin-top:0}
+    h3{margin:18px 0 8px}
+    ul{margin:0 0 12px 18px; line-height:1.7}
+    p{line-height:1.7; margin:0 0 12px}
+    .mono{font-family: Consolas, Monaco, 'Courier New', monospace; background:#000; color:#ffd369; padding:2px 6px; border-radius:6px}
   </style>
 </head>
 <body>
@@ -18,10 +23,57 @@
     <button onclick="location.href='projelerim.html'">← Projelerim</button>
     <strong>LoL Spell Timer</strong>
   </div>
+
   <main>
     <div class="card">
-      <h2>Proje Özeti</h2>
-      <p>Bu proje, League of Legends oyununda yetenek sürelerini (cooldown) otomatik olarak takip eden bir masaüstü arayüzüdür.</p>
+      <h2>Spell Timer Aracı (Python + PyQt5)</h2>
+      <p>Bu proje, PyQt5 kullanılarak geliştirilmiş bir gerçek zamanlı büyü takip arayüzüdür. League of Legends benzeri oyunlarda rakip oyuncuların <em>Flash</em>, <em>Ignite</em>, <em>Heal</em> gibi büyülerinin bekleme sürelerini (cooldown) takip etmek için tasarlanmıştır.</p>
+
+      <h3>Amaç</h3>
+      <p>Rakip takımın büyülerini kaydedip, süresi dolana kadar geri sayım başlatır. Büyü hazır olduğunda renk değişimiyle kullanıcıyı görsel olarak uyarır.</p>
+
+      <h3>Çalışma Mantığı</h3>
+      <ul>
+        <li><span class="mono">constants.py</span> dosyasında her büyünün saniye cinsinden süresi tanımlanır.</li>
+        <li><span class="mono">spell_components.py</span> dosyasında üç temel sınıf bulunur:
+          <ul>
+            <li><strong>SpellButton:</strong> Oyuncunun büyüsünü ikon üzerinden seçmesini sağlar.</li>
+            <li><strong>TimerBox:</strong> Seçilen büyünün süresini başlatır ve geri sayımı ekranda gösterir.</li>
+            <li><strong>SpellSelectWindow:</strong> Küçük bir pencerede büyü seçimi yapılmasını sağlar.</li>
+          </ul>
+        </li>
+        <li><span class="mono">ui_overlay.py</span> dosyası, 5 rol (Solo, Jungle, Mid, ADC, Support) için arayüzü oluşturur. Her satırda 2 büyü butonu ve 2 zamanlayıcı bulunur. Arayüz saydam, sürüklenebilir ve her zaman ekranın üstünde durur.</li>
+        <li><span class="mono">main.py</span> dosyası uygulamayı başlatır ve arayüzü ekrana getirir.</li>
+      </ul>
+
+      <h3>Özellikler</h3>
+      <ul>
+        <li>Saydam ve sürüklenebilir kullanıcı arayüzü</li>
+        <li>Gerçek zamanlı geri sayım (1 saniyelik güncelleme)</li>
+        <li>Dinamik ikon değişimi (büyü değişince simge otomatik güncellenir)</li>
+        <li>Renk kodlu durum göstergesi:
+          <ul>
+            <li><strong>Yeşil:</strong> Büyü beklemede (cooldown aktif)</li>
+            <li><strong>Kırmızı:</strong> Büyü hazır</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3>Kullanım</h3>
+      <ul>
+        <li>Her rol için büyü ikonuna tıklayarak büyü seçilir.</li>
+        <li>Zaman kutusuna tıklanarak geri sayım başlatılır.</li>
+      </ul>
+
+      <!-- Görsel/GIF alanı: İleride eklemek üzere boş bırakıldı -->
+      <div style="margin-top:18px; display:grid; grid-template-columns: repeat(2, 1fr); gap:16px;">
+        <div style="background:#0d0d0d; border:1px dashed #333; border-radius:10px; height:180px; display:flex; align-items:center; justify-content:center; color:#888;">
+          Görsel/GIF 1 (sonradan eklenecek)
+        </div>
+        <div style="background:#0d0d0d; border:1px dashed #333; border-radius:10px; height:180px; display:flex; align-items:center; justify-content:center; color:#888;">
+          Görsel/GIF 2 (sonradan eklenecek)
+        </div>
+      </div>
     </div>
   </main>
 </body>
